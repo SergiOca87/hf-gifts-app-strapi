@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "gifts",
+  "info": {
+    "singularName": "gift",
+    "pluralName": "gifts",
+    "displayName": "Gift",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "featured_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "image_gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "gift_categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::gift-category.gift-category"
+    }
+  }
+}
