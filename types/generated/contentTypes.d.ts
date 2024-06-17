@@ -811,6 +811,9 @@ export interface ApiClientClient extends Schema.CollectionType {
       'oneToOne',
       'api::theme.theme'
     >;
+    numeric_code: Attribute.BigInteger &
+      Attribute.Required &
+      Attribute.DefaultTo<'123456'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

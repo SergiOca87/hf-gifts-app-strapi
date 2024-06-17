@@ -24,6 +24,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::theme.theme"
+    },
+    "numeric_code": {
+      "type": "biginteger",
+      "default": "123456",
+      "required": true
     }
   }
 }
