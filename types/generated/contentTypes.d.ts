@@ -832,6 +832,50 @@ export interface ApiClientClient extends Schema.CollectionType {
   };
 }
 
+export interface ApiEventEvent extends Schema.CollectionType {
+  collectionName: 'events';
+  info: {
+    singularName: 'event';
+    pluralName: 'events';
+    displayName: 'Event';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    full_logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    qr_logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    intro_text: Attribute.Text;
+    gifts: Attribute.Relation<
+      'api::event.event',
+      'oneToMany',
+      'api::gift.gift'
+    >;
+    theme: Attribute.Relation<
+      'api::event.event',
+      'oneToOne',
+      'api::theme.theme'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::event.event',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::event.event',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiGiftGift extends Schema.CollectionType {
   collectionName: 'gifts';
   info: {
@@ -957,6 +1001,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::client.client': ApiClientClient;
+      'api::event.event': ApiEventEvent;
       'api::gift.gift': ApiGiftGift;
       'api::gift-category.gift-category': ApiGiftCategoryGiftCategory;
       'api::theme.theme': ApiThemeTheme;
