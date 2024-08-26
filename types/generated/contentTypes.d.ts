@@ -853,11 +853,8 @@ export interface ApiEventEvent extends Schema.CollectionType {
       'oneToMany',
       'api::gift.gift'
     >;
-    theme: Attribute.Relation<
-      'api::event.event',
-      'oneToOne',
-      'api::theme.theme'
-    >;
+    event_qr_main_color_hex: Attribute.String;
+    event_qr_secondary_color_hex: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
